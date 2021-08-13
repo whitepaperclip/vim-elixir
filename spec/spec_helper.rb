@@ -131,6 +131,12 @@ module LeexBuffer
   end
 end
 
+module HeexBuffer
+  def self.new
+    Buffer.new(VIM, :heex)
+  end
+end
+
 module SurfaceBuffer
   def self.new
     Buffer.new(VIM, :sface)
@@ -163,6 +169,7 @@ end
   be_elixir_indentation:  :ex,
   be_eelixir_indentation: :eex,
   be_leelixir_indentation: :leex,
+  be_heelixir_indentation: :heex,
   be_surface_indentation: :sface
 }.each do |matcher, type|
   RSpec::Matchers.define matcher do
@@ -192,6 +199,7 @@ end
   include_elixir_syntax:  :ex,
   include_eelixir_syntax: :eex,
   include_leelixir_syntax: :leex,
+  include_heelixir_syntax: :heex,
   include_surface_syntax: :sface
 }.each do |matcher, type|
   RSpec::Matchers.define matcher do |syntax, pattern|

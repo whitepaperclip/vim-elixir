@@ -23,10 +23,13 @@ if !exists("b:eelixir_subtype")
     let b:eelixir_subtype = matchstr(&filetype,'^leex\.\zs\w\+')
   endif
   if b:eelixir_subtype == ''
+    let b:eelixir_subtype = matchstr(&filetype,'^heex\.\zs\w\+')
+  endif
+  if b:eelixir_subtype == ''
     let b:eelixir_subtype = matchstr(&filetype,'^sface\.\zs\w\+')
   endif
   if b:eelixir_subtype == ''
-    let b:eelixir_subtype = matchstr(substitute(expand("%:t"),'\c\%(\.eex\|\.sface\|\.leex\|\.eelixir\)\+$','',''),'\.\zs\w\+$')
+    let b:eelixir_subtype = matchstr(substitute(expand("%:t"),'\c\%(\.eex\|\.sface\|\.leex|\.heex\|\.eelixir\)\+$','',''),'\.\zs\w\+$')
   endif
   if b:eelixir_subtype == 'ex'
     let b:eelixir_subtype = 'elixir'
